@@ -15,6 +15,7 @@ MachineCodeComputer_static::set_machine_code(basic_Error & e, std::string machin
 std::string
 MachineCodeComputer_static::get_machine_code(basic_Error & e)
 {
+  (void) e;
   return this->machine_code_;
 }
 

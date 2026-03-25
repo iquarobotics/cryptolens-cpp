@@ -16,6 +16,7 @@ namespace v20190401 {
 
 RequestHandler_curl::RequestHandler_curl(basic_Error & e)
 {
+  (void) e;
   this->curl = curl_easy_init();
   this->timeout_ms_ = 0;
 }
@@ -30,6 +31,7 @@ RequestHandler_curl::~RequestHandler_curl()
 RequestHandler_curl::PostBuilder
 RequestHandler_curl::post_request(basic_Error & e, char const* host, char const* endpoint)
 {
+  (void) e;
   return RequestHandler_curl_PostBuilder(curl, host, endpoint, this->timeout_ms_);
 }
 
@@ -224,6 +226,7 @@ RequestHandler_curl_PostBuilder::make(basic_Error & e)
 void
 RequestHandler_curl::set_timeout(basic_Error & e, long timeout_ms)
 {
+  (void) e;
   this->timeout_ms_ = timeout_ms;
 }
 

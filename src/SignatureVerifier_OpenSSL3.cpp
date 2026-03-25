@@ -129,7 +129,7 @@ end:
 
 SignatureVerifier_OpenSSL3::SignatureVerifier_OpenSSL3(basic_Error & e)
 : pkey_(NULL)
-{ }
+{(void) e; }
 
 SignatureVerifier_OpenSSL3::~SignatureVerifier_OpenSSL3()
 {
@@ -228,6 +228,8 @@ SignatureVerifier_OpenSSL3::set_modulus_base64(basic_Error & e, std::string cons
 void
 SignatureVerifier_OpenSSL3::set_exponent_base64(basic_Error & e, std::string const& exponent_base64)
 {
+  (void) e;
+  (void) exponent_base64;
   // Exponent is always AQAB in our API and we set it in set_modulus_base64()
 }
 

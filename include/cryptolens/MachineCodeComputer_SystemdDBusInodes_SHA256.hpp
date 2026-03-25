@@ -20,7 +20,7 @@ class MachineCodeComputer_SystemdDBusInodes_SHA256
 {
 public:
   explicit
-  MachineCodeComputer_SystemdDBusInodes_SHA256(basic_Error & e) {}
+  MachineCodeComputer_SystemdDBusInodes_SHA256(basic_Error & e) {(void) e;}
 
   std::string
   get_machine_code(basic_Error & e);

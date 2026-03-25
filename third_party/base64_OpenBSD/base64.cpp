@@ -203,7 +203,8 @@ b64_ntop(src, srclength, target, targsize)
 int
 b64_pton(char const *src, unsigned char *target, size_t targsize)
 {
-	int tarindex, state, ch;
+	int state, ch;
+	size_t tarindex;
 	unsigned char nextbyte;
 	const char *pos;
 

@@ -51,6 +51,7 @@ append_inode(std::stringstream & s, char const* file)
 std::string
 MachineCodeComputer_SystemdDBusInodes_SHA256::get_machine_code(basic_Error & e)
 {
+  (void) e;
   char HEX[] = "0123456789abcdef";
   std::stringstream s;
 

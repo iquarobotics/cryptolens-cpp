@@ -3,10 +3,17 @@ project (cryptolens)
 
 set (CRYPTOLENS_BUILD_TESTS OFF CACHE BOOL "build tests?")
 set (CRYPTOLENS_CURL_EMBED_CACERTS OFF CACHE BOOL "embed the ca certs in the library instead of using system default files?")
-set(CRYPTOLENS_LIBRARY_TYPE "STATIC" CACHE STRING "Type of library to be created. Must be STATIC, SHARED or MODULE.")
+set (CRYPTOLENS_LIBRARY_TYPE "STATIC" CACHE STRING "Type of library to be created. Must be STATIC, SHARED or MODULE.")
 
 set (SRC "src/ActivateError.cpp" "src/DataObject.cpp" "src/LicenseKey.cpp" "src/LicenseKeyChecker.cpp" "src/LicenseKeyInformation.cpp" "src/MachineCodeComputer_static.cpp" "src/RawLicenseKey.cpp" "src/ResponseParser_ArduinoJson7.cpp" "src/basic_SKM.cpp" "src/cryptolens_internals.cpp" "third_party/base64_OpenBSD/base64.cpp")
 
+add_compile_options(
+    $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall>
+    $<$<CXX_COMPILER_ID:GNU,Clang>:-Wextra>
+    $<$<CXX_COMPILER_ID:GNU,Clang>:-Wpedantic>
+    $<$<CXX_COMPILER_ID:MSVC>:/W4>
+    $<$<CXX_COMPILER_ID:MSVC>:/permissive->
+)
 if(NOT WIN32)
   set (LIBS "pthread" "dl")
 

@@ -19,7 +19,7 @@ class ResponseParser_ArduinoJson7 {
  */
 public:
   explicit
-  ResponseParser_ArduinoJson7(basic_Error & e) {}
+  ResponseParser_ArduinoJson7(basic_Error & e) {(void) e;}
 
   optional<LicenseKeyInformation> make_license_key_information(basic_Error & e, RawLicenseKey const& raw_license_key) const;
   optional<LicenseKeyInformation> make_license_key_information(basic_Error & e, optional<RawLicenseKey> const& raw_license_key) const;
