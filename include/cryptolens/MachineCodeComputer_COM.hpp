@@ -30,7 +30,7 @@ public:
 #ifndef CRYPTOLENS_20190701_ALLOW_IMPLICIT_CONSTRUCTORS
   explicit
 #endif
-  MachineCodeComputer_COM_Recompute(basic_Error & e) {}
+  MachineCodeComputer_COM_Recompute(basic_Error & e) {(void) e;}
 
   std::string
   get_machine_code(basic_Error & e);

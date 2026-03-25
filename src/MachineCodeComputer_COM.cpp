@@ -245,6 +245,7 @@ cleanup:
 
 HRESULT GetNICInfo(basic_Error & e, std::wstring & append)
 {
+	(void) e;
 	WCHAR HEX[] = L"0123456789ABCDEF";
 
 	ULONG outBufLen = 0;
@@ -305,6 +306,7 @@ HRESULT GetNICInfo(basic_Error & e, std::wstring & append)
 
 HRESULT GetWindowsIdentity(basic_Error & e, std::wstring & append)
 {
+	(void) e;
 	ATL::CAccessToken accessToken;
 	ATL::CSid currentUserSid;
 	if (accessToken.GetProcessToken(TOKEN_READ | TOKEN_QUERY)
@@ -321,7 +323,7 @@ HRESULT GetWindowsIdentity(basic_Error & e, std::wstring & append)
 size_t SHA1(basic_Error & e, std::wstring const& data, std::string & append)
 {
 	HCRYPTPROV hProv;
-	HCRYPTHASH hHash;
+	HCRYPTHASH hHash = NULL;
 
 	BYTE *pbHash = NULL;
 	DWORD dwHashLen;
@@ -359,7 +361,8 @@ size_t SHA1(basic_Error & e, std::wstring const& data, std::string & append)
 		e.set(api, 6, 18, result); goto cleanup;
 	}
 
-	if (!(pbHash = (BYTE*)malloc(dwHashLen)))
+	pbHash = (BYTE*)malloc(dwHashLen);
+	if (!pbHash)
 	{
 		result = 1;
 		e.set(api, 6, 19, result); goto cleanup;
@@ -403,7 +406,7 @@ void GetMachineCode(basic_Error & e, std::wstring & append, std::wstring & appen
 	std::wstring machinecode_debug;
 	std::wstring machinecode;
 
-	 api::main api;
+	api::main api_;
 
 	HRESULT result, result_init;
 	IWbemLocator* pLocator = NULL;
@@ -413,10 +416,10 @@ void GetMachineCode(basic_Error & e, std::wstring & append, std::wstring & appen
 	if (result_init == RPC_E_CHANGED_MODE) {
 		result_init = CoInitializeEx(0, COINIT_MULTITHREADED);
 	}
-	if (FAILED(result_init)) { e.set(api, 6, 1, result_init); goto cleanup; }
+	if (FAILED(result_init)) { e.set(api_, 6, 1, result_init); goto cleanup; }
 
 	result = CoInitializeSecurity(NULL, -1, NULL, NULL, RPC_C_AUTHN_LEVEL_DEFAULT, RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE, NULL);
-	if (FAILED(result) && result != RPC_E_TOO_LATE) { e.set(api, 6, 2, result); goto cleanup; }
+	if (FAILED(result) && result != RPC_E_TOO_LATE) { e.set(api_, 6, 2, result); goto cleanup; }
 	result = GetWbemService(e, &pLocator, &pService);
 	if (FAILED(result)) { goto cleanup; }
 

@@ -323,7 +323,7 @@ b64_pton(char const *src, unsigned char *target, size_t targsize)
 			return (-1);
 	}
 
-	return (tarindex);
+	return static_cast<int>(tarindex);
 }
 
 optional<std::vector<unsigned char>>

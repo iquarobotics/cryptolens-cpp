@@ -28,13 +28,14 @@ percent_encode(std::string const& s);
 RequestHandler_WinHTTP::RequestHandler_WinHTTP(basic_Error & e)
 : resolve_timeout_ms_(0), connect_timeout_ms_(60000),
   send_timeout_ms_(30000), receive_timeout_ms_(30000)
-{}
+{ (void) e;}
 
 RequestHandler_WinHTTP::~RequestHandler_WinHTTP() {}
 
 RequestHandler_WinHTTP::PostBuilder
 RequestHandler_WinHTTP::post_request(basic_Error& e, char const* host, char const* endpoint)
 {
+  (void) e;
   return RequestHandler_WinHTTP_PostBuilder(host, endpoint, resolve_timeout_ms_, connect_timeout_ms_, send_timeout_ms_, receive_timeout_ms_);
 }
 
@@ -150,7 +151,7 @@ RequestHandler_WinHTTP_PostBuilder::make(basic_Error & e)
 
   result =  WinHttpSendRequest( hRequest
                                , L"Content-Type: application/x-www-form-urlencoded"
-                               , -1L
+                               , (DWORD)-1
                                , (LPVOID *)postfields_.c_str()
                                , (DWORD)postfields_.size()
                                , (DWORD)postfields_.size()

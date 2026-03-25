@@ -66,7 +66,7 @@ cleanup:
   }
 }
 
-SignatureVerifier_CryptoAPI::SignatureVerifier_CryptoAPI(basic_Error & e) : hProv_{}, hPubKey_{} { }
+SignatureVerifier_CryptoAPI::SignatureVerifier_CryptoAPI(basic_Error & e) : hProv_{}, hPubKey_{} {(void) e;}
 
 void SignatureVerifier_CryptoAPI::init(basic_Error & e)
 {
