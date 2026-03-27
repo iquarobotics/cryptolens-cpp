@@ -82,6 +82,7 @@ end:
 
 SignatureVerifier_OpenSSL::SignatureVerifier_OpenSSL(basic_Error & e)
 {
+  (void) e;
   this->rsa = RSA_new();
 #if OPENSSL_VERSION_NUMBER < 0x10100000L
   if (this->rsa != NULL) {
