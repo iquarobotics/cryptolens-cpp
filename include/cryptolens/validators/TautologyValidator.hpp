@@ -12,9 +12,9 @@ public:
 #ifndef CRYPTOLENS_20190701_ALLOW_IMPLICIT_CONSTRUCTORS
   explicit
 #endif
-  TautologyValidator_(basic_Error & e) {}
+  TautologyValidator_(basic_Error & e) {(void) e;}
 
-  void validate(basic_Error & e, Env & env) {}
+  void validate(basic_Error & e, Env & env) {(void) e; (void) env;}
 };
 
 } // namespace v20190401
