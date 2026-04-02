@@ -159,7 +159,7 @@ RequestHandler_WinHTTP_PostBuilder::make(basic_Error & e)
   if (!result) { e.set(api, Subsystem::RequestHandler, err::WINHTTP_SEND_REQUEST_FAILED, GetLastError()); goto cleanup; }
 
   result = WinHttpReceiveResponse(hRequest, NULL);
-  if (!result) { e.set(api, Subsystem::RequestHandler, err::WINHTTP_RECIEVE_RESPONSE_FAILED, GetLastError()); goto cleanup; }
+  if (!result) { e.set(api, Subsystem::RequestHandler, err::WINHTTP_RECEIVE_RESPONSE_FAILED, GetLastError()); goto cleanup; }
 
   do {
     bytes = 0;

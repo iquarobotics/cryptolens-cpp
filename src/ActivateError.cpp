@@ -71,7 +71,7 @@ ActivateError::what() const noexcept
   return "Invalid access token.";
 
   case UNKNOWN_SERVER_REPLY:
-  return "Recieved unknown reply from the server.";
+  return "Received unknown reply from the server.";
 
   case ACCESS_DENIED:
   return "Access denied.";
