@@ -234,9 +234,9 @@ handle_activate
  *
  * This class uses two policy classes, SignatureVerifier and RequestHandler,
  * which are responsible for handling verification of signatures and making
- * requests to the Web API, respectivly. Consult the documentation for the
+ * requests to the Web API, respectively. Consult the documentation for the
  * chosen policy classes since in some cases special initialization may be
- * neccessary.
+ * necessary.
  */
 template<typename Configuration>
 class basic_Cryptolens
@@ -513,7 +513,7 @@ basic_Cryptolens<Configuration>::deactivate
  * Make an Activate request to the Cryptolens Web API
  *
  * Arguments:
- *   token - acces token to use
+ *   token - access token to use
  *   product_id - the product id
  *   key - the serial key string, e.g. ABCDE-EFGHI-JKLMO-PQRST
  *
@@ -557,7 +557,7 @@ basic_Cryptolens<Configuration>::activate_raw
  * floating_time_interval.
  *
  * Arguments:
- *   token - acces token to use
+ *   token - access token to use
  *   product_id - the product id
  *   key - the serial key string, e.g. ABCDE-EFGHI-JKLMO-PQRST
  *   floating_time_interval - we count machine codes that were created after
@@ -755,7 +755,7 @@ basic_Cryptolens<Configuration>::activate_floating_
  * Make an Activate request to the Cryptolens Web API
  *
  * Arguments:
- *   token - acces token to use
+ *   token - access token to use
  *   product_id - the product id
  *   key - the serial key string, e.g. ABCDE-EFGHI-JKLMO-PQRST
  *   machine_code - the machine code, i.e. a string that identifies a device
